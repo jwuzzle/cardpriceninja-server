@@ -3,10 +3,13 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const cors = require("cors");
 const puppeteer = require("puppeteer");
+const ebayRoutes = require("./routes/ebayapi")
 
 const app = express();
 app.use(cors());
 
+
+app.use('/ebay', ebayRoutes)
 
 
 app.get("/scrape", async (req, res) => {
