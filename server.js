@@ -8,7 +8,9 @@ const scrapeRoutes = require("./routes/scrape")
 const bodyParser = require("body-parser")
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://www.cardpriceninja.com'
+  }));
 app.use(bodyParser.json());
 
 
