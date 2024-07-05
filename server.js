@@ -13,6 +13,9 @@ app.use(cors({
   }));
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 app.use('/ebay', ebayRoutes)
 app.use('/scrape', scrapeRoutes)
