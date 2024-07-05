@@ -69,6 +69,7 @@ router.get("/", async (req, res) => {
     }
 })
 
+
 router.post("/used", async (req, res) => {
 
     const { url } = req.body;
@@ -82,7 +83,10 @@ router.post("/used", async (req, res) => {
     
 
     try {
-        const browser = await puppeteer.launch() //launching the browser and awaiting it because we don't know how long it will take
+        const browser = await puppeteer.launch({
+            executablePath: '/path/to/chrome', // Adjust path to Chrome executable
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        }); //launching the browser and awaiting it because we don't know how long it will take
         const page = await browser.newPage()
         await page.goto(url, { waitUntil: 'networkidle2' }); //pull in url from the POST endpoint here
         console.log('Navigated to URL');
